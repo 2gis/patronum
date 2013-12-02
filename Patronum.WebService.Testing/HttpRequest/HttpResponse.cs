@@ -1,5 +1,5 @@
 ﻿
-namespace Patronum.WebService.Testing.WebServiceClients.Request
+namespace Patronum.WebService.Testing.HttpRequest
 {
     public struct HttpResponse
     {

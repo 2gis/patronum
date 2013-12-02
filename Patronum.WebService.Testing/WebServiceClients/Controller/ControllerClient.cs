@@ -1,7 +1,7 @@
 ﻿
-using Patronum.WebService.Testing.WebServiceClients.Clients.Rest;
+using Patronum.WebService.Testing.WebServiceClients.Rest;
 
-namespace Patronum.WebService.Testing.WebServiceClients.Clients.Controller
+namespace Patronum.WebService.Testing.WebServiceClients.Controller
 {
     public abstract class ControllerClient : RestClient
     {

@@ -39,7 +39,7 @@
     <Compile Include="ApplicationAction.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\2Gis.TestingTools.Patronum\Patronum.WebService.Testing.csproj">
+    <ProjectReference Include="..\Patronum.WebService.Testing\Patronum.WebService.Testing.csproj">
       <Project>{6fbd0dc3-5d17-4568-b1f5-88613536c646}</Project>
       <Name>Patronum.WebService.Testing</Name>
     </ProjectReference>

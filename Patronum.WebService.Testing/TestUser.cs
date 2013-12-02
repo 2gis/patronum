@@ -21,9 +21,14 @@ namespace Patronum.WebService.Testing
         public string Password { get; set; }
 
 
-        public NetworkCredential GetNetworkCredential()
+        public NetworkCredential NetworkCredential
         {
-            return new NetworkCredential("2gis\\" + Name, Password);
+            get
+            {
+                return string.IsNullOrEmpty(Name)
+                    ? CredentialCache.DefaultNetworkCredentials 
+                    : new NetworkCredential(Name, Password);
+            }
         }
     }
 }

@@ -42,22 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\LogException.cs" />
+    <Compile Include="HttpRequest\Request\RestRequest.cs" />
     <Compile Include="IApplicationUnderTest.cs" />
-    <Compile Include="WebServiceClients\Request\SoapRequest.cs" />
+    <Compile Include="HttpRequest\Request\SoapRequest.cs" />
     <Compile Include="WebServiceClients\WebServiceMethod.cs" />
     <Compile Include="WebServiceUnderTest.cs" />
     <Compile Include="WebServiceTestCase.cs" />
     <Compile Include="Exceptions\NotFoundTestDataException.cs" />
     <Compile Include="Helpers\HtmlSourceHelper.cs" />
-    <Compile Include="Helpers\JsonSourceHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebServiceClients\ClientCreator.cs" />
-    <Compile Include="WebServiceClients\Clients\Controller\ControllerClient.cs" />
-    <Compile Include="WebServiceClients\Request\HttpResponse.cs" />
-    <Compile Include="WebServiceClients\Request\HttpRequest.cs" />
-    <Compile Include="WebServiceClients\Clients\Rest\RestClient.cs" />
-    <Compile Include="WebServiceClients\Clients\Soap\SoapClient.cs" />
+    <Compile Include="WebServiceClients\Controller\ControllerClient.cs" />
+    <Compile Include="HttpRequest\HttpResponse.cs" />
+    <Compile Include="HttpRequest\HttpRequest.cs" />
+    <Compile Include="WebServiceClients\Rest\RestClient.cs" />
+    <Compile Include="WebServiceClients\Soap\SoapClient.cs" />
     <Compile Include="TestUser.cs" />
     <Compile Include="WebServiceClients\WebServiceClient.cs" />
   </ItemGroup>

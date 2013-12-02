@@ -14,7 +14,6 @@ namespace Patronum.Actions
             ApplicationUnderTest = app;
         }
 
-
         public abstract bool SignIn();
 
         public abstract bool SignOut();
