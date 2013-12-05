@@ -1,0 +1,34 @@
+﻿using System.Net;
+
+namespace Patronum.WebService.Test
+{
+    public class TestUser
+    {
+        public TestUser(long id, string name, string passwd, string username = "")
+        {
+            Id = id;
+            Name = name;
+            Password = passwd;
+            UserName = string.IsNullOrEmpty(username) ? (name + ',' + name) : username;
+        }
+
+        public long Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
+
+
+        public NetworkCredential NetworkCredential
+        {
+            get
+            {
+                return string.IsNullOrEmpty(Name)
+                    ? CredentialCache.DefaultNetworkCredentials 
+                    : new NetworkCredential(Name, Password);
+            }
+        }
+    }
+}
