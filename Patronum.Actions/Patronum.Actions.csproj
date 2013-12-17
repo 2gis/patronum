@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1C235496-11FE-4F7C-A80B-7460482C498B}</ProjectGuid>
+    <ProjectGuid>{F657FCAF-F10A-45B9-885C-492263EA10CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Patronum.Actions</RootNamespace>
@@ -47,11 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action.cs" />
-    <Compile Include="IAction.cs" />
-    <Compile Include="IActor.cs" />
-    <Compile Include="IApplicationUnderTest.cs" />
+    <Compile Include="ActionWithActor.cs" />
+    <Compile Include="Extensions\ApplicationUnderTestExtension.cs" />
+    <Compile Include="Intarfaces\IAction.cs" />
+    <Compile Include="Intarfaces\IActor.cs" />
+    <Compile Include="Intarfaces\IApplicationUnderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

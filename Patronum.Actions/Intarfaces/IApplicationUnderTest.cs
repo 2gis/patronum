@@ -1,5 +1,5 @@
 ﻿
-namespace Patronum.Actions
+namespace Patronum.Actions.Intarfaces
 {
     public interface IApplicationUnderTest
     {

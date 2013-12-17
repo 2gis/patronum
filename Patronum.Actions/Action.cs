@@ -1,18 +1,15 @@
 ﻿
 namespace Patronum.Actions
 {
-    public abstract class Action<T> : IAction where T : IActor, new()
+    using Patronum.Actions.Intarfaces;
+
+    public abstract class Action : IAction
     {
         protected IApplicationUnderTest ApplicationUnderTest { get; set; }
-
-        protected IActor Actor { get; set; }
 
         protected Action(IApplicationUnderTest application)
         {
             ApplicationUnderTest = application;
-
-            Actor = new T();
-            Actor.SignIn();
         }
 
         public abstract object Execute(params object[] parameters);
