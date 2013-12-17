@@ -16,6 +16,6 @@ namespace Patronum.Actions
             Actor.SignIn();
         }
 
-        public abstract object Execute(params object[] list);
+        public abstract object Execute(params object[] parameters);
     }
 }

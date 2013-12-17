@@ -38,12 +38,18 @@
   <ItemGroup>
     <Compile Include="Exceptions\NotFoundTestDataException.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
+    <Compile Include="Extensions\WebServiceTestCaseExtension.cs" />
     <Compile Include="Helpers\HtmlSourceHelper.cs" />
     <Compile Include="IApplicationUnderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestUser.cs" />
     <Compile Include="WebServiceTestCase.cs" />
     <Compile Include="WebServiceUnderTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Patronum.Actions\Patronum.Actions.csproj">
+      <Project>{1C235496-11FE-4F7C-A80B-7460482C498B}</Project>
+      <Name>Patronum.Actions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

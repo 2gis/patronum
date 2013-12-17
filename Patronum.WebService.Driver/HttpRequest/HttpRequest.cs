@@ -16,6 +16,10 @@ namespace Patronum.WebService.Driver.HttpRequest
 
         protected readonly Uri ServiceUri;
 
+        public HttpRequest(Uri uri)
+        {
+            ServiceUri = uri;
+        }
 
         public HttpRequest(Uri uri, NetworkCredential credential)
         {
@@ -26,10 +30,11 @@ namespace Patronum.WebService.Driver.HttpRequest
         protected HttpResponse Request(HttpWebRequest request)
         {
             var response = new HttpResponse();
+            response.Uri = request.RequestUri;
 
             try
             {
-                var result = (HttpWebResponse)request.GetResponse();
+                var result = (HttpWebResponse)(request.GetResponse());
                 response.Code = (int)result.StatusCode;
 
                 var responseStream = result.GetResponseStream();

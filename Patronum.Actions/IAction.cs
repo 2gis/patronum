@@ -1,5 +1,4 @@
-﻿
-namespace Patronum.Actions
+﻿namespace Patronum.Actions
 {
     public interface IAction
     {

@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Patronum.WebService.Driver.HttpRequest
 {
     public struct HttpResponse
@@ -6,5 +8,7 @@ namespace Patronum.WebService.Driver.HttpRequest
         public int Code;
 
         public string Text;
+
+        public Uri Uri;
     }
 }

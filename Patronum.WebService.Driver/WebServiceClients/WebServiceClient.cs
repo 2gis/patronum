@@ -5,19 +5,34 @@ namespace Patronum.WebService.Driver.WebServiceClients
 {
     public abstract class WebServiceClient
     {
-        protected NetworkCredential UserCredentials;
+        protected NetworkCredential _userCredentials;
+
+        protected Uri _serviceBaseUri;
 
         protected WebServiceClient(string serviceBaseUrl)
         {
-            ServiceBaseUri = new Uri(serviceBaseUrl);
+            _serviceBaseUri = new Uri(serviceBaseUrl);
         }
 
-        protected Uri ServiceBaseUri { get; set; }
+        public Uri ServiceBaseUri
+        {
+            get
+            {
+                return _serviceBaseUri;
+            }
+        }
+
+        public NetworkCredential UserCredentials
+        {
+            get
+            {
+                return _userCredentials;
+            }
+        }
 
         public void SetUserCredentials(NetworkCredential credentials)
         {
-            UserCredentials = credentials;
+            _userCredentials = credentials;
         }
-
     }
 }

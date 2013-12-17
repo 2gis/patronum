@@ -1,11 +1,10 @@
-﻿
-using Patronum.WebService.Driver.WebServiceClients.Rest;
+﻿using Patronum.WebService.Driver.WebServiceClients.Rest;
 
 namespace Patronum.WebService.Driver.WebServiceClients.Controller
 {
     public abstract class ControllerClient : RestClient
     {
-        protected ControllerClient(string serviceBaseUrl) : base(serviceBaseUrl)
+        protected ControllerClient(string serviceBaseUrl) : base(serviceBaseUrl, ContentType.FormData)
         {
         }
     }
