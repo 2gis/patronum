@@ -11,7 +11,6 @@ namespace Patronum.WebService.Test
 
         public TestContext TestContext { get; set; }
 
-
         [TestInitialize]
         public virtual void FunctionalTestInitialize()
         {

@@ -1,5 +1,5 @@
 ﻿
-namespace Patronum.WebService.Test
+namespace Patronum.Actions
 {
     public interface IApplicationUnderTest
     {

@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
-
+using Patronum.Actions;
 
 namespace Patronum.WebService.Test
 {
@@ -10,7 +10,7 @@ namespace Patronum.WebService.Test
     {
         public WebServiceUnderTest()
         {
-            Config = ConfigurationManager.AppSettings;
+            this.Config = ConfigurationManager.AppSettings;
         }
 
         public NameValueCollection Config { get; set; }
@@ -20,12 +20,11 @@ namespace Patronum.WebService.Test
         #region Log
 
         // todo need reactoring
-
         public StreamWriter OpenLogFile()
         {
             try
             {
-                string filename = LogsDirectory + @"\log_" + DateTime.Now.ToString("MMddyyyy");
+                string filename = this.LogsDirectory + @"\log_" + DateTime.Now.ToString("MMddyyyy");
 
                 return !File.Exists(filename) ? new StreamWriter(filename) : File.AppendText(filename);
             }
@@ -37,7 +36,7 @@ namespace Patronum.WebService.Test
 
         public void CloseLogFile()
         {
-            using (var log = OpenLogFile())
+            using (var log = this.OpenLogFile())
             {
                 try
                 {
@@ -54,7 +53,7 @@ namespace Patronum.WebService.Test
         {
             try
             {
-                using (var log = OpenLogFile())
+                using (var log = this.OpenLogFile())
                 {
                     log.WriteLine("REQUEST:");
                     log.WriteLine(requestUrl);
@@ -73,4 +72,3 @@ namespace Patronum.WebService.Test
         #endregion
     }
 }
-

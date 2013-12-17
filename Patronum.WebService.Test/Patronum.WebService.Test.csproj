@@ -40,7 +40,6 @@
     <Compile Include="Extensions\ListExtension.cs" />
     <Compile Include="Extensions\WebServiceTestCaseExtension.cs" />
     <Compile Include="Helpers\HtmlSourceHelper.cs" />
-    <Compile Include="IApplicationUnderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebServiceTestCase.cs" />
     <Compile Include="WebServiceUnderTest.cs" />

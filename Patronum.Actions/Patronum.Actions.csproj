@@ -49,6 +49,7 @@
     <Compile Include="Action.cs" />
     <Compile Include="IAction.cs" />
     <Compile Include="IActor.cs" />
+    <Compile Include="IApplicationUnderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
