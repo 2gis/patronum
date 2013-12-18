@@ -27,7 +27,7 @@ namespace Patronum.WebService.Driver.HttpRequest
             Credential = credential;
         }
 
-        protected HttpResponse Request(HttpWebRequest request)
+        public HttpResponse Request(HttpWebRequest request)
         {
             var response = new HttpResponse();
             response.Uri = request.RequestUri;

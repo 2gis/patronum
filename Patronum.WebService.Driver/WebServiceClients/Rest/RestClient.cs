@@ -33,33 +33,38 @@ namespace Patronum.WebService.Driver.WebServiceClients.Rest
         {
             var request = new RestRequest(new Uri(ServiceBaseUri + relativeLink), _userCredentials);
 
-            string contentType;
-            switch (ContentType)
+            if (method == RequestMethod.Get)
             {
-                case ContentType.Xml:
-                    contentType = "application/xml";
-                    break;
-
-                case ContentType.Json:
-                    contentType = "application/json";
-                    break;                
-                
-                case ContentType.Csv:
-                    contentType = "test/csv";
-                    break;
-
-                case ContentType.Jsv:
-                    contentType = "test/jsv";
-                    break;
-
-                default:
-                    contentType = "application/x-www-form-urlencoded";
-                    break;
+                return request.GetRequest(PrepareRequestData(data));
             }
+            else
+            {
+                string contentType;
+                switch (ContentType)
+                {
+                    case ContentType.Xml:
+                        contentType = "application/xml";
+                        break;
 
-            return method == RequestMethod.Get ? 
-                request.GetRequest(PrepareRequestData(data)) : 
-                request.PostRequest(PrepareRequestData(data), contentType);
+                    case ContentType.Json:
+                        contentType = "application/json";
+                        break;
+
+                    case ContentType.Csv:
+                        contentType = "test/csv";
+                        break;
+
+                    case ContentType.Jsv:
+                        contentType = "test/jsv";
+                        break;
+
+                    default:
+                        contentType = "application/x-www-form-urlencoded";
+                        break;
+                }
+
+                return request.PostRequest(PrepareRequestData(data), contentType);
+            }
         }
 
         public string PrepareRequestData(object parameters)

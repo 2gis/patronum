@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F657FCAF-F10A-45B9-885C-492263EA10CF}</ProjectGuid>
+    <ProjectGuid>{1C235496-11FE-4F7C-A80B-7460482C498B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Patronum.Actions</RootNamespace>

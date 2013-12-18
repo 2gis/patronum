@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patronum.WebService.Test
+namespace Patronum.WebService.Test.Helpers
 {
     [TestClass]
     public abstract class WebServiceTestCase
     {
-        public virtual WebServiceUnderTest WebServiceUnderTest { get; set; }
+        public virtual WebServiceUnderTest WebService { get; set; }
 
         public string LastErrorText { get; set; }
 
@@ -14,7 +14,7 @@ namespace Patronum.WebService.Test
         [TestInitialize]
         public virtual void FunctionalTestInitialize()
         {
-            WebServiceUnderTest = new WebServiceUnderTest();
+            WebService = new WebServiceUnderTest();
         }
     }
 }

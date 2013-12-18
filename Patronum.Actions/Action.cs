@@ -1,7 +1,7 @@
 ﻿
 namespace Patronum.Actions
 {
-    using Patronum.Actions.Intarfaces;
+    using Intarfaces;
 
     public abstract class Action : IAction
     {

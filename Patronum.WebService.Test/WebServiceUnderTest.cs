@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
-using Patronum.Actions;
+using Patronum.Actions.Intarfaces;
 
 namespace Patronum.WebService.Test
 {
