@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Patronum.WebService.Test.Helpers
+namespace Patronum.WebService.Test
 {
     [TestClass]
     public abstract class WebServiceTestCase
