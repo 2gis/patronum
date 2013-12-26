@@ -1,9 +1,10 @@
 ﻿
 using System;
+using System.Net;
 
 namespace Patronum.WebService.Driver.HttpRequest
 {
-    public struct HttpResponse
+    public class HttpResponse : WebResponse
     {
         public int Code;
 

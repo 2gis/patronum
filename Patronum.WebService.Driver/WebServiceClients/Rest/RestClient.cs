@@ -35,7 +35,7 @@ namespace Patronum.WebService.Driver.WebServiceClients.Rest
 
             if (method == RequestMethod.Get)
             {
-                return request.GetRequest(PrepareRequestData(data));
+                return request.GetRequest(PrepareRequestData(data, method));
             }
             else
             {
@@ -63,11 +63,11 @@ namespace Patronum.WebService.Driver.WebServiceClients.Rest
                         break;
                 }
 
-                return request.PostRequest(PrepareRequestData(data), contentType);
+                return request.PostRequest(PrepareRequestData(data, method), contentType);
             }
         }
 
-        public string PrepareRequestData(object parameters)
+        public string PrepareRequestData(object parameters, RequestMethod method)
         {
             var result = string.Empty;
 
@@ -76,26 +76,28 @@ namespace Patronum.WebService.Driver.WebServiceClients.Rest
                 return result;
             }
 
-            switch (ContentType)
-            {              
-                case ContentType.Json:
-                    return JsonConvert.SerializeObject(parameters);
+            if (method == RequestMethod.Post)
+            {
+                switch (ContentType)
+                {
+                    case ContentType.Json:
+                        return JsonConvert.SerializeObject(parameters);
 
-                case ContentType.Xml:
-                    using (var sw = new System.IO.StringWriter())
-                    {
-                        var serializer = new XmlSerializer(parameters.GetType());
-                        serializer.Serialize(sw, this);
-                        return sw.ToString();
-                    }
-
-                default:
-                    result = ((Dictionary<string, string>)parameters).Aggregate(
-                        result,
-                        (current, parameter) => current + (parameter.Key + '=' + parameter.Value + '&'));
-
-                    return result.Trim(new[] { '&' });
+                    case ContentType.Xml:
+                        using (var sw = new System.IO.StringWriter())
+                        {
+                            var serializer = new XmlSerializer(parameters.GetType());
+                            serializer.Serialize(sw, this);
+                            return sw.ToString();
+                        }
+                }
             }
+
+            result = ((Dictionary<string, object>)parameters).Aggregate(
+                result,
+                (current, parameter) => current + (parameter.Key + '=' + parameter.Value.ToString() + '&'));
+
+            return result.Trim(new[] {'&'});
         }
     }
 }

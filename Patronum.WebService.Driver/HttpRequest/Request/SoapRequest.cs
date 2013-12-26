@@ -6,38 +6,35 @@ namespace Patronum.WebService.Driver.HttpRequest.Request
 {
     public class SoapRequest : HttpRequest
     {
-        protected readonly string Action;
-
-        public SoapRequest(Uri uri, string action, NetworkCredential credential) : base(uri, credential)
+        public SoapRequest(Uri uri, string action, NetworkCredential credential = null)
+            : base(uri)
         {
             Action = action;
+            ApplyCredential(credential);
         }
+
+        public string Action { get; set; }
 
 
         public HttpResponse Request(XDocument soapEnvelop)
         {           
-            HttpWebRequest webRequest = PrepareSoapRequest(ServiceUri, Action);
-            InsertSoapEnvelopeIntoWebRequest(soapEnvelop, webRequest);
+            PrepareSoapRequest();
+            InsertSoapEnvelopeIntoWebRequest(soapEnvelop);
 
-            return base.Request(webRequest);
+            return base.Request();
         }
 
-        private HttpWebRequest PrepareSoapRequest(Uri uri, string action)
+        private void PrepareSoapRequest()
         {
-            var webRequest = (HttpWebRequest)WebRequest.Create(uri);
-            webRequest.Headers.Add("SOAPAction", action);
-            webRequest.ContentType = "text/xml;charset=\"utf-8\"";
-            webRequest.Accept = "text/xml";
-            webRequest.Method = "POST";
-
-            webRequest.Credentials = Credential;
-
-            return webRequest;
+            _request.Headers.Add("SOAPAction", Action);
+            _request.ContentType = "text/xml;charset=\"utf-8\"";
+            _request.Headers.Add(HttpRequestHeader.Accept, "text/xml");
+            _request.Method = "POST";
         }
         
-        private void InsertSoapEnvelopeIntoWebRequest(XDocument soapEnvelopeXml, HttpWebRequest webRequest)
+        private void InsertSoapEnvelopeIntoWebRequest(XDocument soapEnvelopeXml)
         {
-            using (var stream = webRequest.GetRequestStream())
+            using (var stream = _request.GetRequestStream())
             {
                 soapEnvelopeXml.Save(stream);
             }

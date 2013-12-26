@@ -10,31 +10,22 @@ namespace Patronum.WebService.Driver.HttpRequest
         Get
     }
 
-    public class HttpRequest
+    public class HttpRequest : WebRequest
     {
-        protected readonly NetworkCredential Credential;
-
-        protected readonly Uri ServiceUri;
+        protected WebRequest _request;
 
         public HttpRequest(Uri uri)
         {
-            ServiceUri = uri;
+            _request = Create(uri);
         }
 
-        public HttpRequest(Uri uri, NetworkCredential credential)
+        public HttpResponse Request()
         {
-            ServiceUri = uri;
-            Credential = credential;
-        }
-
-        public HttpResponse Request(HttpWebRequest request)
-        {
-            var response = new HttpResponse();
-            response.Uri = request.RequestUri;
+            var response = new HttpResponse { Uri = _request.RequestUri };
 
             try
             {
-                var result = (HttpWebResponse)(request.GetResponse());
+                var result = (HttpWebResponse)_request.GetResponse();
                 response.Code = (int)result.StatusCode;
 
                 var responseStream = result.GetResponseStream();
@@ -59,6 +50,25 @@ namespace Patronum.WebService.Driver.HttpRequest
             }
 
             return response;
+        }
+
+        public void ApplyCredential(NetworkCredential credential)
+        {
+            if (credential != null)
+            {
+                _request.Credentials = new CredentialCache { { _request.RequestUri, "Negotiate", credential } };
+            }
+        }
+
+        public void ApplyCookies(CookieCollection cookie)
+        {
+            if (cookie != null)
+            {
+                var httpRequest = (HttpWebRequest)_request;
+
+                httpRequest.CookieContainer = new CookieContainer();
+                httpRequest.CookieContainer.Add(_request.RequestUri, cookie);
+            }
         }
     }
 }

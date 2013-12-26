@@ -1,7 +1,7 @@
 ﻿
 namespace Patronum.Actions.Intarfaces
 {
-    public interface IAction
+    public interface ITestAction
     {
         object Execute(params object[] list);
     }

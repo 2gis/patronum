@@ -6,79 +6,43 @@ namespace Patronum.WebService.Driver.HttpRequest.Request
 {
     public class RestRequest : HttpRequest
     {
-        public RestRequest(Uri uri) : base(uri)
-        {
-        }
+        private readonly NetworkCredential _credential;
 
         public RestRequest(Uri uri, NetworkCredential credential)
-            : base(uri, credential)
+            : base(uri)
         {
+            _credential = credential;
         }
-
-        // todo refactor
-        public static CookieCollection Cookies { get; set; }
 
         public HttpResponse PostRequest(string data, string contentType)
         {
-            //string data = parameters.ToString(); //PrepareRequestData(parameters);
+            _request.Method = "POST";
 
-            var request = PreparePostRequest(data, contentType);
-           
-            if (Credential != null)
-            {
-                request.Credentials = new CredentialCache { { ServiceUri, "Negotiate", Credential } };
-            }
-
-            return base.Request(request);
-        }
-
-        public HttpResponse GetRequest(string data)
-        {
-            var request = PrepareGetRequest(data);
-
-            if (Credential != null)
-            {
-                request.Credentials = new CredentialCache { { ServiceUri, "Negotiate", Credential } };
-            }
-
-            return base.Request(request);
-        }
-
-        protected HttpWebRequest PreparePostRequest(string data, string contentType)
-        {
-            var request = (HttpWebRequest)WebRequest.Create(ServiceUri);
-
-            request.Method = "POST";
-
-            if (Cookies != null)
-            {
-                request.CookieContainer = new CookieContainer();
-                request.CookieContainer.Add(ServiceUri, Cookies); 
-            }
-
-            request.ContentType = contentType; // "application/x-www-form-urlencoded";
-            using (var dataStream = new StreamWriter(request.GetRequestStream()))
+            _request.ContentType = contentType;
+            using (var dataStream = new StreamWriter(_request.GetRequestStream()))
             {
                 dataStream.Write(data);
                 dataStream.Flush();
             }
 
-            return request;
+            ApplyCredential(_credential);
+
+            return base.Request();
         }
 
-        protected HttpWebRequest PrepareGetRequest(string data)
+        public HttpResponse GetRequest(string data)
         {
-            var request = (HttpWebRequest)WebRequest.Create(new Uri(ServiceUri, "?" + data));
-
-            request.Method = "GET";
-
-            if (Cookies != null)
+            if (data.Length > 0)
             {
-                request.CookieContainer = new CookieContainer();
-                request.CookieContainer.Add(ServiceUri, Cookies);
+                var request = Create(new Uri(_request.RequestUri + "?" + data));
+                _request = request;
             }
 
-            return request;
+            _request.Method = "GET";
+
+            ApplyCredential(_credential);
+
+            return base.Request();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace Patronum.Actions.Intarfaces
 {
-    public interface IActor
+    public interface ITestActor
     {
         bool SignIn();
 

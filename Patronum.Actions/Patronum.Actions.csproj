@@ -46,12 +46,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action.cs" />
-    <Compile Include="ActionWithActor.cs" />
+    <Compile Include="TestAction.cs" />
+    <Compile Include="TestActionWithActor.cs" />
     <Compile Include="Extensions\ApplicationUnderTestExtension.cs" />
-    <Compile Include="Intarfaces\IAction.cs" />
-    <Compile Include="Intarfaces\IActor.cs" />
-    <Compile Include="Intarfaces\IApplicationUnderTest.cs" />
+    <Compile Include="Interfaces\ITestAction.cs" />
+    <Compile Include="Interfaces\ITestActor.cs" />
+    <Compile Include="Interfaces\IApplicationUnderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

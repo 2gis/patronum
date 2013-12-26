@@ -3,11 +3,11 @@ namespace Patronum.Actions
 {
     using Intarfaces;
 
-    public abstract class Action : IAction
+    public abstract class TestAction : ITestAction
     {
         protected IApplicationUnderTest ApplicationUnderTest { get; set; }
 
-        protected Action(IApplicationUnderTest application)
+        protected TestAction(IApplicationUnderTest application)
         {
             ApplicationUnderTest = application;
         }
