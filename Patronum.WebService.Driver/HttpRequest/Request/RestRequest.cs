@@ -6,12 +6,8 @@ namespace Patronum.WebService.Driver.HttpRequest.Request
 {
     public class RestRequest : HttpRequest
     {
-        private readonly NetworkCredential _credential;
-
-        public RestRequest(Uri uri, NetworkCredential credential)
-            : base(uri)
+        public RestRequest(Uri uri) : base(uri)
         {
-            _credential = credential;
         }
 
         public HttpResponse PostRequest(string data, string contentType)
@@ -25,8 +21,6 @@ namespace Patronum.WebService.Driver.HttpRequest.Request
                 dataStream.Flush();
             }
 
-            ApplyCredential(_credential);
-
             return base.Request();
         }
 
@@ -35,12 +29,19 @@ namespace Patronum.WebService.Driver.HttpRequest.Request
             if (data.Length > 0)
             {
                 var request = Create(new Uri(_request.RequestUri + "?" + data));
+                
+                var cookies = ((HttpWebRequest)_request).CookieContainer.GetCookies(_request.RequestUri);
+
+                var credentials = _request.Credentials.GetCredential(_request.RequestUri, "Negotiate");
+                
                 _request = request;
+
+                ApplyCookies(cookies);
+
+                ApplyCredential(credentials);
             }
 
             _request.Method = "GET";
-
-            ApplyCredential(_credential);
 
             return base.Request();
         }

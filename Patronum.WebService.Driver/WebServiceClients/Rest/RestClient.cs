@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Patronum.WebService.Driver.HttpRequest;
@@ -29,9 +30,14 @@ namespace Patronum.WebService.Driver.WebServiceClients.Rest
         public HttpResponse Request(
                                     string relativeLink, 
                                     object data, 
-                                    RequestMethod method = RequestMethod.Get)
+                                    RequestMethod method = RequestMethod.Get,
+                                    CookieCollection cookies = null)
         {
-            var request = new RestRequest(new Uri(ServiceBaseUri + relativeLink), _userCredentials);
+            var request = new RestRequest(new Uri(ServiceBaseUri + relativeLink));
+
+            request.ApplyCredential(_userCredentials);
+
+            request.ApplyCookies(cookies);
 
             if (method == RequestMethod.Get)
             {

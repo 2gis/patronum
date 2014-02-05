@@ -6,11 +6,10 @@ namespace Patronum.WebService.Driver.HttpRequest.Request
 {
     public class SoapRequest : HttpRequest
     {
-        public SoapRequest(Uri uri, string action, NetworkCredential credential = null)
+        public SoapRequest(Uri uri, string action)
             : base(uri)
         {
             Action = action;
-            ApplyCredential(credential);
         }
 
         public string Action { get; set; }
@@ -28,10 +27,10 @@ namespace Patronum.WebService.Driver.HttpRequest.Request
         {
             _request.Headers.Add("SOAPAction", Action);
             _request.ContentType = "text/xml;charset=\"utf-8\"";
-            _request.Headers.Add(HttpRequestHeader.Accept, "text/xml");
+           ((HttpWebRequest)_request).Accept = "text/xml";
             _request.Method = "POST";
         }
-        
+
         private void InsertSoapEnvelopeIntoWebRequest(XDocument soapEnvelopeXml)
         {
             using (var stream = _request.GetRequestStream())

@@ -12,7 +12,10 @@ namespace Patronum.WebService.Driver.WebServiceClients.Soap
 
         public HttpResponse Request(string action, XDocument soapEnvelop)
         {
-            var request = new SoapRequest(ServiceBaseUri, action, _userCredentials);
+            var request = new SoapRequest(ServiceBaseUri, action);
+
+            request.ApplyCredential(_userCredentials);
+
             return request.Request(soapEnvelop);
         }
     }
