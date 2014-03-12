@@ -29,14 +29,17 @@ namespace Patronum.WebService.Driver.HttpRequest.Request
             if (data.Length > 0)
             {
                 var request = Create(new Uri(_request.RequestUri + "?" + data));
-                
-                var cookies = ((HttpWebRequest)_request).CookieContainer.GetCookies(_request.RequestUri);
 
+                var cookieContainer = ((HttpWebRequest)_request).CookieContainer;
+                
                 var credentials = _request.Credentials.GetCredential(_request.RequestUri, "Negotiate");
                 
                 _request = request;
 
-                ApplyCookies(cookies);
+                if (cookieContainer != null)
+                {
+                    ApplyCookies(cookieContainer.GetCookies(_request.RequestUri));
+                }
 
                 ApplyCredential(credentials);
             }

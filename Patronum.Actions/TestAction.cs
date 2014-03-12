@@ -1,8 +1,8 @@
 ﻿
+using Patronum.Actions.Interfaces;
+
 namespace Patronum.Actions
 {
-    using Intarfaces;
-
     public abstract class TestAction : ITestAction
     {
         protected IApplicationUnderTest ApplicationUnderTest { get; set; }

@@ -1,8 +1,8 @@
 ﻿
+using Patronum.Actions.Interfaces;
+
 namespace Patronum.Actions
 {
-    using Intarfaces;
-
     public abstract class TestAction<T> : TestAction where T : ITestActor, new()
     {
         protected ITestActor Actor { get; set; }

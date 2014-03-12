@@ -38,14 +38,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Patronum.WebService.Test, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Patronum.WebService.Test\bin\Debug\Patronum.WebService.Test.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\ActionException.cs" />
     <Compile Include="TestAction.cs" />
     <Compile Include="TestActionWithActor.cs" />
     <Compile Include="Extensions\ApplicationUnderTestExtension.cs" />

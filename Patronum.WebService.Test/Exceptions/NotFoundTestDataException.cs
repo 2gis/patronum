@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.ServiceModel;
 
 namespace Patronum.WebService.Test.Exceptions
 {
-    public class NotFoundTestDataException : UnitTestAssertException
+    public class NotFoundTestDataException : FaultException
     {
         public NotFoundTestDataException()
         {
