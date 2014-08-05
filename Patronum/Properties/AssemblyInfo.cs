@@ -1,5 +1,9 @@
-﻿using System.Reflection;
+﻿#region using
+
+using System.Reflection;
 using System.Runtime.InteropServices;
+
+#endregion
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -22,14 +26,9 @@ using System.Runtime.InteropServices;
 [assembly: Guid("83e7aa55-8589-4fb3-a758-b21914dc2305")]
 
 // Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.1")]
-[assembly: AssemblyFileVersion("1.0.0.1")]
+//      Major Version - увеличение при сделанных обратно несовместимых изменениях
+//      Minor Version - увеличение при добавлении нового функционала, не нарушая обратной совместимости
+//      Build Number - увеличение при обратно совместимых исправлениях
+//      Revision - auto
+[assembly: AssemblyVersion("1.0.1.*")]
+[assembly: AssemblyFileVersion("1.0.1.*")]
