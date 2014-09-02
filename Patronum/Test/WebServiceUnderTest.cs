@@ -6,9 +6,7 @@ namespace Patronum.Test
     using System.Configuration;
     using System.IO;
 
-    using TestActions.Interfaces;
-
-    public class WebServiceUnderTest : IApplicationUnderTest
+    public class WebServiceUnderTest
     {
         public WebServiceUnderTest()
         {

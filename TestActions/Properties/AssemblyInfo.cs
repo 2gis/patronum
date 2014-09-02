@@ -1,6 +1,9 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿#region using
+
+using System.Reflection;
 using System.Runtime.InteropServices;
+
+#endregion
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -8,9 +11,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("TestActions")]
 [assembly: AssemblyDescription("Test Action Library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("2Gis")]
+[assembly: AssemblyCompany("2ГИС")]
 [assembly: AssemblyProduct("TestActions")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright © 2ГИС 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -23,14 +26,9 @@ using System.Runtime.InteropServices;
 [assembly: Guid("1c78ec31-cc6a-4534-9e18-50be75f8bdbe")]
 
 // Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.1")]
-[assembly: AssemblyFileVersion("1.0.0.1")]
+//      Major Version - увеличение при сделанных обратно несовместимых изменениях
+//      Minor Version - увеличение при добавлении нового функционала, не нарушая обратной совместимости
+//      Build Number - увеличение при обратно совместимых исправлениях
+//      Revision - auto
+[assembly: AssemblyVersion("2.0.0.*")]
+[assembly: AssemblyFileVersion("2.0.0.*")]
