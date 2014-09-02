@@ -31,7 +31,7 @@
         public UserTestAction<TIUser> RegisterUser<TUser>()
             where TUser : TIUser
         {
-            var userName = GetUserName<TIUser>();
+            var userName = GetUserName<TUser>();
             _unityContainer.RegisterType<TIUser, TUser>(userName, new ContainerControlledLifetimeManager());
             return this;
         }
