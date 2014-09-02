@@ -88,7 +88,7 @@
         }
 
         /// <summary>
-        /// Возвращает действие от заданного пользователя (должен быть зарегистрированным).
+        /// Возвращает действие от заданного по типу пользователя (должен быть зарегистрированным).
         /// </summary>
         /// <typeparam name="TAction">
         /// Тип действия.
@@ -100,6 +100,20 @@
             where TUser : TIUser
         {
             var user = GetUser<TUser>();
+            return PrivateResolve<TAction>(user);
+        }
+
+        /// <summary>
+        /// Возвращает действие от заданного пользователя.
+        /// </summary>
+        /// <param name="user">
+        /// Экземпляр пользователя.
+        /// </param>
+        /// <typeparam name="TAction">
+        /// Тип действия.
+        /// </typeparam>
+        public TAction Resolve<TAction>(TIUser user)
+        {
             return PrivateResolve<TAction>(user);
         }
 
