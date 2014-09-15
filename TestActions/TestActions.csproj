@@ -28,7 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\TestActions.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\TestActions.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,7 +54,7 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\TestActionsException.cs" />
+    <Compile Include="TestActionsException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserTestAction.cs" />
   </ItemGroup>

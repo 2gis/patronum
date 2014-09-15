@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 //      Minor Version - увеличение при добавлении нового функционала, не нарушая обратной совместимости
 //      Build Number - увеличение при обратно совместимых исправлениях
 //      Revision - auto
-[assembly: AssemblyVersion("2.1.2.*")]
-[assembly: AssemblyFileVersion("2.1.2.*")]
+[assembly: AssemblyVersion("2.1.3.*")]
+[assembly: AssemblyFileVersion("2.1.3.*")]

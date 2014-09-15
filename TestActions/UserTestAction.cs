@@ -4,8 +4,6 @@
 
     using Microsoft.Practices.Unity;
 
-    using TestActions.Exceptions;
-
     #endregion
 
     public class UserTestAction<TIUser>
@@ -14,6 +12,9 @@
 
         private string _currentUserName = string.Empty;
 
+        /// <summary>
+        /// Возвращает исходный экземпляр Unity-контейнера.
+        /// </summary>
         public UnityContainer Instance
         {
             get
@@ -126,6 +127,11 @@
 
         private TIUser PrivateGetUser(string userName)
         {
+            if (!_unityContainer.IsRegistered<TIUser>(userName))
+            {
+                throw new TestActionsException(string.Format("Пользователь \"{0}\" незарегистрирован.", userName));
+            }
+
             return _unityContainer.Resolve<TIUser>(userName);
         }
 

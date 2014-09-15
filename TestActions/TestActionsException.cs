@@ -1,4 +1,4 @@
-﻿namespace TestActions.Exceptions
+﻿namespace TestActions
 {
     #region using
 
