@@ -40,6 +40,18 @@
         /// <summary>
         /// Задать текущего пользователя.
         /// </summary>
+        /// <param name="user">
+        /// Экземпляр пользователя.
+        /// </param>
+        public UserTestAction<TIUser> SetCurrentUser(TIUser user)
+        {
+            _currentUser = user;
+            return this;
+        }
+
+        /// <summary>
+        /// Задать текущего пользователя по его типу.
+        /// </summary>
         /// <typeparam name="TUser">
         /// Тип пользователя.
         /// </typeparam>
@@ -84,8 +96,7 @@
         /// </typeparam>
         public TAction Resolve<TAction>()
         {
-            var user = GetUser();
-            return PrivateResolve<TAction>(user);
+            return PrivateResolve<TAction>(_currentUser);
         }
 
         /// <summary>
