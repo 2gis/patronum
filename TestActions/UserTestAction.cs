@@ -6,11 +6,11 @@
 
     #endregion
 
-    public class UserTestAction<TIUser>
+    public class UserTestAction<TIUser> where TIUser : class
     {
         private readonly UnityContainer _unityContainer = new UnityContainer();
 
-        private string _currentUserName = string.Empty;
+        private TIUser _currentUser;
 
         /// <summary>
         /// Возвращает исходный экземпляр Unity-контейнера.
@@ -46,7 +46,7 @@
         public UserTestAction<TIUser> SetCurrentUser<TUser>()
             where TUser : TIUser
         {
-            _currentUserName = GetUserName<TUser>();
+            _currentUser = GetUser<TUser>();
             return this;
         }
 
@@ -55,12 +55,12 @@
         /// </summary>
         public TIUser GetUser()
         {
-            if (string.IsNullOrEmpty(_currentUserName))
+            if (_currentUser == null)
             {
                 throw new TestActionsException("Не задан текущий пользователь.");
             }
 
-            return PrivateGetUser(_currentUserName);
+            return _currentUser;
         }
 
         /// <summary>
