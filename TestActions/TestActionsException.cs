@@ -8,6 +8,8 @@
 
     public class TestActionsException : Exception
     {
+        #region Constructors and Destructors
+
         public TestActionsException()
         {
         }
@@ -21,5 +23,7 @@
             : base(message, innerException)
         {
         }
+
+        #endregion
     }
 }
