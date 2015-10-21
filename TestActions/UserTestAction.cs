@@ -11,7 +11,7 @@
     {
         #region Fields
 
-        private readonly UnityContainer unityContainer = new UnityContainer();
+        private readonly IUnityContainer unityContainer = new UnityContainer();
 
         private TIUser currentUser;
 
@@ -22,7 +22,7 @@
         /// <summary>
         /// Возвращает исходный экземпляр Unity-контейнера.
         /// </summary>
-        public UnityContainer Instance
+        public IUnityContainer Instance
         {
             get
             {
@@ -41,7 +41,7 @@
         {
             if (this.currentUser == null)
             {
-                throw new TestActionsException("Не задан текущий пользователь.");
+                throw new TestActionsException("Current user not set.");
             }
 
             return this.currentUser;
@@ -206,7 +206,7 @@
         {
             if (!this.unityContainer.IsRegistered<TIUser>(userName))
             {
-                throw new TestActionsException(string.Format("Пользователь \"{0}\" незарегистрирован.", userName));
+                throw new TestActionsException(string.Format("User \"{0}\" is not registered.", userName));
             }
 
             return this.unityContainer.Resolve<TIUser>(userName);
